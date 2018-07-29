@@ -5,15 +5,16 @@ public class Fibonacci {
         if (n <= 1)
             return n;
 
-        int[] list = new int[n + 1];
-        list[0] = 0;
-        list[1] = 1;
+        long previous = 0;
+        long current  = 1;
 
-        for (int i = 2; i <= n; i++) {
-            list[i] = list[i - 2] + list[i - 1];
+        for (int i = 0; i < n - 1; ++i) {
+            long tmp_previous = previous;
+            previous = current;
+            current = tmp_previous + current;
         }
 
-        return list[n];
+        return current;
     }
 
     public static void main(String args[]) {
